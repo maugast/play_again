@@ -1,0 +1,16 @@
+.card {
+    border: 1px solid #ababab;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 1px 1px 5px #1b1b1b71;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+
+    img{
+        max-width: 150px;
+    }
+}
