@@ -4,15 +4,12 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
-function ItemCartCount ({stock, initial}){
+function ItemCartCount ({stock, initial, counter}){
 
   const [count, setCount] = useState(initial);
   const [disableUp, setDisableUp] = useState(false);
-  const [disableDown, setDisableDown] = useState(false);
-  const onAdd = ()=>{
-    console.log(count);
-  }
-
+  const [disableDown, setDisableDown] = useState(true);
+ 
 
   const setItemCountUp = ()=>{
     setCount(count+1);
@@ -50,7 +47,7 @@ function ItemCartCount ({stock, initial}){
             <AddOutlinedIcon/>
       </Button>
       <Button
-          onClick={onAdd}
+          onClick={()=>{counter(count)}}
           variant='contained'
           color="secondary">
           Agregar     
