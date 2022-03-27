@@ -1,13 +1,13 @@
-.greeting-container{
-	display: flex;
-	text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    margin-top: 20px;
-}
-
 .card-grid{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.banner{
+    height:400px;
+    width:100%;
+    background-image: url("../Images/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -4,6 +4,8 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 
+
+
 function ItemCartCount ({stock, initial, counter}){
 
   const [count, setCount] = useState(initial);

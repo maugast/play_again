@@ -1,7 +1,6 @@
 import React from 'react';
 import Item from '../Item/Item';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -10,7 +9,7 @@ const ItemList = ()=>{
     const mockConsoles = [
         {id: 1,
         title: "Atari 2600",
-        image: '',
+        image: "./components/Images/atari2600.png",
         price: 26000
         },
         {id: 2,
