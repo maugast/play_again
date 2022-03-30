@@ -2,12 +2,12 @@ import React from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import {useState, useEffect} from 'react';
 import './_itemDetailContainer.scss';
-import Atari from '../Images/atari2600.png';
+import Atari from '../../Images/atari2600.png';
 
 
 const ItemDetailCotainer = ()=>{
 
-    const mockDetails = ['Atari 2600',{Atari},'26000','128 bytes RAM','1977'];
+    const mockDetails = ['Atari 2600',Atari,'26000','128 bytes RAM','1977'];
 
     const [detail, setDetail] = useState([]);
 

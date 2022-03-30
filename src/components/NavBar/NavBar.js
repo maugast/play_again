@@ -10,8 +10,10 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CartWidget from '../CartWidget/CartWidget';
-import Logo from '../Images/play_again-logo.png';
+import Logo from '../../Images/play_again-logo.png';
 import './_navBar.scss';
+
+
 
 const pages = ['Home', 'Productos', 'Nosotros','Contacto'];
 

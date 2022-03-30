@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './_itemListContainer.scss'
 import ItemList from "../ItemList/ItemList";
 
-const ItemListContainer = ({greeting}) =>{
+const ItemListContainer = () =>{
 
     return(
         <div>

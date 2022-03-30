@@ -1,50 +1,56 @@
 import React from 'react';
 import Item from '../Item/Item';
 import { useState, useEffect } from 'react';
-
-
+import Atari from '../../Images/atari2600.png';
+import GameBoy from '../../Images/gameboy.png';
+import Genesis from '../../Images/genesis.png';
+import Jaguar from '../../Images/jaguar.png';
+import MasterSystem from '../../Images/mastersystem.png';
+import Nes from '../../Images/nes.png';
+import Panasonic from '../../Images/panasonic.png';
+import Snes from '../../Images/snes.png';
 
 const ItemList = ()=>{
 
     const mockConsoles = [
         {id: 1,
         title: "Atari 2600",
-        image: "./components/Images/atari2600.png",
+        image: Atari,
         price: 26000
         },
         {id: 2,
         title: "Nintendo Game Boy",
-        image: '../Images/gameboy.png',
+        image: GameBoy,
         price: 15000
         },
         {id: 3,
         title: "Sega Genesis",
-        image: '../Images/genesis.png',
+        image: Genesis,
         price: 32000
         },
         {id: 4,
         title: "Atari Jaguar",
-        image: '../Images/mastersystem.png',
+        image: Jaguar,
         price: 52000
         },
         {id: 5,
         title: "Sega Master System",
-        image: '../Images/mastersystem.png',
+        image: MasterSystem,
         price: 22000
         },
         {id: 6,
         title: "Nintendo NES",
-        image: '../Images/nes.png',
+        image: Nes,
         price: 20000
         },
         {id: 7,
         title: "Panasonic 3DO",
-        image: '../Images/panasonic.png',
+        image: Panasonic,
         price: 36000
         },
         {id: 8,
         title: "Super Nintendo",
-        image: '../Images/snes.png',
+        image: Snes,
         price: 42000
         },
     ]
