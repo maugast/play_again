@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+//MUI Components
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,13 +11,28 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+
+//Components
 import CartWidget from '../CartWidget/CartWidget';
 import Logo from '../../Images/play_again-logo.png';
+import {Link} from 'react-router-dom';
+
+//Styles
 import './_navBar.scss';
 
 
 
-const pages = ['Home', 'Productos', 'Nosotros','Contacto'];
+const pages = [
+	{title:'Home',
+	 url: '/home'},
+	{title:'Productos',
+	 url: '/productos'},
+	{title:'Nosotros',
+	 url: '/nosotros'},
+	{title:'Contacto',
+	 url: '/contacto'},
+]
+
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -41,7 +58,7 @@ const ResponsiveAppBar = () => {
                     sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
                         <div className="container-logo">
-                            <img src={Logo} alt="logo"/>
+                        <Link to={'/home'}><img src={Logo} alt="logo"/></Link>
                         </div>
 
                 </Typography>
@@ -77,7 +94,9 @@ const ResponsiveAppBar = () => {
                         >
                         {pages.map((page) => (
                             <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography>{page}</Typography>
+                                <Typography>
+                                    <Link to={page.url}>{page.title}</Link>
+                                </Typography>
                             </MenuItem>
                         ))}
                     </Menu>
@@ -89,7 +108,7 @@ const ResponsiveAppBar = () => {
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                         >
                         <div className="container-logo">
-                            <img src={Logo} alt="logo"/>
+                            <Link to={'/home'}><img src={Logo} alt="logo"/></Link>
                         </div>
 
                     </Typography>
@@ -102,7 +121,7 @@ const ResponsiveAppBar = () => {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, mx:1 , color: 'secondary', display: 'block' }}
                             >
-                            {page}
+                            <Link to={page.url}>{page.title}</Link>
                         </Button>
                     ))}
                 </Box>
