@@ -24,7 +24,7 @@ import './_navBar.scss';
 
 const pages = [
 	{title:'Home',
-	 url: '/home'},
+	 url: '/'},
 	{title:'Productos',
 	 url: '/productos'},
 	{title:'Nosotros',
@@ -58,7 +58,7 @@ const ResponsiveAppBar = () => {
                     sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
                         <div className="container-logo">
-                        <Link to={'/home'}><img src={Logo} alt="logo"/></Link>
+                        <Link to={'/'}><img src={Logo} alt="logo"/></Link>
                         </div>
 
                 </Typography>
