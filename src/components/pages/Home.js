@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 const Home = () => {
+
+    useEffect(()=>{
+        document.title='Play Again? - Ecommerce';
+    },[]);
+
     return (
         <div>
             <div className="banner"></div>

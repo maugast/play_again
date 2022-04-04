@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@mui/material/Container';
 
 const About = ()=>{
+
+    useEffect(()=>{
+        document.title='Play Again? - Nosotros';
+    },[]);
+
     return (
         <Container>
             <h1>Nosotros</h1>

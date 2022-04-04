@@ -11,6 +11,7 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import ErrorPage from './components/pages/ErroPage';
 import DetailPage from './components/pages/DetailPage';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/contacto' element={<Contact />}/>
         <Route path= '/nosotros' element={<About />}/>
         <Route path='*' element={<ErrorPage />}/>
+        <Route path='/cart' element={<Cart />}/>
       </Routes>
       </BrowserRouter>
     </div>

@@ -108,7 +108,7 @@ const ResponsiveAppBar = () => {
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                         >
                         <div className="container-logo">
-                            <Link to={'/home'}><img src={Logo} alt="logo"/></Link>
+                            <Link to={'/'}><img src={Logo} alt="logo"/></Link>
                         </div>
 
                     </Typography>
