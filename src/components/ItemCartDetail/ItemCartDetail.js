@@ -6,7 +6,7 @@ import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutl
 import { Link } from 'react-router-dom';
 
 
-function ItemCartDetail ({stock, initial, action}){
+function ItemCartDetail ({stock, initial, action}){ //Recibimos el prop action desde el componente padre DetailPage
 
   const [count, setCount] = useState(initial);
   const [disableUp, setDisableUp] = useState(false);
@@ -48,10 +48,13 @@ function ItemCartDetail ({stock, initial, action}){
         disabled={disableUp}>
             <AddOutlinedIcon/>
       </Button>
+
+      
+                {/* Aplicamos el prop action a la funcion onClick*/}
       <Button
           onClick={(e) =>action(e,count)}
           variant='contained'
-          color="secondary">
+          color="secondary"> 
           <Link to={'/cart'} style={{ textDecoration: 'none', color: '#ffffff' }}> {/* Botón que finaliza la compra y lleva al componente Cart */}
           Ir al Carrito 
           <AddShoppingCartOutlinedIcon fontSize="small"/>
