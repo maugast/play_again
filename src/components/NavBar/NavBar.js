@@ -23,13 +23,17 @@ import './_navBar.scss';
 
 
 const pages = [
-	{title:'Home',
+	{id:1,   
+     title:'Home',
 	 url: '/'},
-	{title:'Productos',
+	{id:2,
+     title:'Productos',
 	 url: '/productos'},
-	{title:'Nosotros',
+	{id:3,
+     title:'Nosotros',
 	 url: '/nosotros'},
-	{title:'Contacto',
+	{id:4,
+     title:'Contacto',
 	 url: '/contacto'},
 ]
 
@@ -93,7 +97,7 @@ const ResponsiveAppBar = () => {
                         }}
                         >
                         {pages.map((page) => (
-                            <MenuItem key={page} onClick={handleCloseNavMenu}>
+                            <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                                 <Typography>
                                     <Link to={page.url}>{page.title}</Link>
                                 </Typography>
@@ -117,7 +121,7 @@ const ResponsiveAppBar = () => {
                         <Button
                             color="secondary"
                             variant="outlined"
-                            key={page}
+                            key={page.id}
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, mx:1 , color: 'secondary', display: 'block' }}
                             >
