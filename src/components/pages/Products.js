@@ -11,12 +11,10 @@ useEffect(()=>{
 },[]);
 
     return (
-        <div>
+        <Container className='container'>
             <h1>Productos</h1>
-            <Container>
-                <ItemListContainer />
-            </Container>
-        </div>
+            <ItemListContainer />
+        </Container>
     )
 }
 

@@ -1,15 +1,38 @@
 import './_item.scss';
 
 //Components
+import { useState, useEffect ,useContext } from 'react';
 import ItemCartCount from '../ItemCartCount/ItemCartCount';
 import {Link} from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 
-const Item = ({id,title, image ,price,stock})=> {
+
+const Item = ({id,title,image,price,stock,stored})=> {
     
+    const {cartProducts, addProductToCart} = useContext(CartContext);
 
-    const onAdd = (quantity)=>{
-        console.log(quantity);
+      const data ={
+          id,
+          title,
+          image,
+          price,
+          stock,
+          stored
       }
+
+      const addToCart = (quantity) => {
+        console.log('Productos agregados: ', cartProducts);
+        data.price *=quantity;
+        console.log('Quantity ', quantity)
+        data.stock-=quantity;
+        console.log('Stock actual', data.stock)
+        data.stored=quantity;
+        addProductToCart(data);
+      }
+
+      useEffect(()=>{
+          console.log('Productos del carrito: ', cartProducts);
+      })
 
     return (
         <div className='card'>
@@ -17,11 +40,10 @@ const Item = ({id,title, image ,price,stock})=> {
             <Link to={`/productos/${id}`}><img src={image} alt='Consola'/></Link>
             <p>Precio: ${price}</p>
             <ItemCartCount
-                stock={stock}
+                action={addToCart}
                 initial={1}
-                counter={onAdd}
+                stock={data.stock}
             />
-
         </div>
     )
 }

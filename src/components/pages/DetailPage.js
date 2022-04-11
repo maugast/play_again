@@ -1,32 +1,42 @@
 //Hooks
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 //Components
 import mockItems from '../../itemsMock';
-import ItemCartDetail from '../ItemCartDetail/ItemCartDetail';
+import CartContext from '../../context/CartContext';
+import Container from '@mui/material/Container';
+import ItemCartCount from '../ItemCartCount/ItemCartCount';
 
-const DetailPage = () => {
+const DetailPage = ({title,image,price,stock,stored}) => {
 
+    const {cartProducts, addProductToCart} = useContext(CartContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
-    const [quantity, setQuantity] = useState(1);
-    let [items, setItems] = useState();
 
-
-    //Función que se pasa al Componente hijo "ItemCartDetail", recibe los parámetros e y q(desde el Componente hijo)
-    const addItemsToCart = (e, q) =>{
-        e.stopPropagation();
-        setItems(q);
-        items = q;
-        console.log('Desde el hijo:', q );
-        console.log('Cantidad de Items agregados:', items);
-        setQuantity(quantity+1);
+    const data ={
+        id:product.id,
+        title:product.title,
+        image:product.image,
+        price:product.price,
+        stock:product.stock,
+        stored:product.stored
     }
+
+    const addToCart = (quantity) => {
+        console.log('Productos agregados: ', cartProducts);
+        data.price *=quantity;
+        console.log('Quantity ', quantity)
+        data.stock-=quantity;
+        console.log('Stock actual', data.stock)
+        data.stored=quantity;
+        addProductToCart(data);
+      }
 
 
     useEffect(()=>{
         filterConsolesById(mockItems, id);
+        console.log('Data: ', data)
     },[id]);
 
     const filterConsolesById = (array, id) => {
@@ -38,20 +48,25 @@ const DetailPage = () => {
     }
 
     return (
-        <div>
+        <Container className='container'>
             <div className='item-detail'>
-                <h2>{product.title}</h2>
-                <img src={product.image} alt='imagen'/>
-                <p>Precio: ${product.price}</p>
-                <p>Información técnica: {product.data}</p>
-                <p>Año: {product.year}</p>
-                <ItemCartDetail 
-                    stock={product.stock}
-                    initial={1}
-                    action={addItemsToCart}
-                />
+                <div>
+                    <h2>{product.title}</h2>
+                    <img src={product.image} alt='imagen'/>
+                </div>
+                <div className='item-detail-data'>
+                    <p>Precio: ${product.price}</p>
+                    <p>Información técnica: {product.info}</p>
+                    <p>Año: {product.year}</p>
+                    <ItemCartCount
+                        id={product.id}
+                        stock={product.stock}
+                        initial={1}
+                        action={addToCart}
+                        />
+                </div>
             </div>
-        </div>
+        </Container>
     )
 }
 

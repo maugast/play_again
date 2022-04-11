@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import Container from '@mui/material/Container';
 
 const Home = () => {
 
@@ -10,7 +10,9 @@ const Home = () => {
     return (
         <div>
             <div className="banner"></div>
-            <h1>Home</h1>
+            <Container className='container'>
+               <h1>Home</h1>
+            </Container>
         </div>
     )
 }

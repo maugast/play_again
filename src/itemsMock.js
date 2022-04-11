@@ -12,65 +12,73 @@ const mockItems = [
     title: "Atari 2600",
     image: Atari,
     price: 26000,
-    data:'128 bytes de RAM',
+    info:'128 bytes de RAM',
     year:1977,
-    stock:8
+    stock:8,
+    stored:1
     },
     {id: 2,
     title: "Nintendo Game Boy",
     image: GameBoy,
     price: 15000,
-    data:'8 bits de RAM',
+    info:'8 bits de RAM',
     year:1989,
-    stock:6
+    stock:6,
+    stored:1
     },
     {id: 3,
     title: "Sega Genesis",
     image: Genesis,
     price: 32000,
-    data:'16 bits RAM',
+    info:'16 bits RAM',
     year:1988,
-    stock:7
+    stock:7,
+    stored:1
     },
     {id: 4,
     title: "Atari Jaguar",
     image: Jaguar,
     price: 52000,
-    data:'64 bits de RAM',
+    info:'64 bits de RAM',
     year:1993,
-    stock:9
+    stock:9,
+    stored:1
     },
     {id: 5,
     title: "Sega Master System",
     image: MasterSystem,
     price: 22000,
-    data:'8 bits de RAM',
+    info:'8 bits de RAM',
     year:1985,
-    stock:4
+    stock:4,
+    stored:1
     },
     {id: 6,
     title: "Nintendo NES",
     image: Nes,
     price: 20000,
-    data:'8 bits de RAM',
+    info:'8 bits de RAM',
     year:1983,
-    stock:11
+    stock:11,
+    stored:1
     },
     {id: 7,
     title: "Panasonic 3DO",
     image: Panasonic,
     price: 36000,
-    data:'32 bits de RAM',
+    info:'32 bits de RAM',
     year:1993,
-    stock:10
+    stock:10,
+    stored:1
     },
     {id: 8,
     title: "Super Nintendo",
     image: Snes,
     price: 42000,
-    data:'16 bits de RAM',
+    info:'16 bits de RAM',
     year:1990,
-    stock:5
+    stock:5,
+    stored:1
     },
 ]
 

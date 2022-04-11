@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from '@mui/material/Button';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import { Link } from 'react-router-dom';
 
 
-function ItemCartDetail ({stock, initial, action}){ //Recibimos el prop action desde el componente padre DetailPage
+function ItemCartDetail ({stock,initial,action}){
+
 
   const [count, setCount] = useState(initial);
   const [disableUp, setDisableUp] = useState(false);
   const [disableDown, setDisableDown] = useState(true);
- 
 
   const setItemCountUp = ()=>{
     setCount(count+1);
@@ -35,30 +34,25 @@ function ItemCartDetail ({stock, initial, action}){ //Recibimos el prop action d
   }
 
   return (
-    <div className="item-cart-display">
+    <div>
       <Button
-        onClick={setItemCountDown}
-        disabled={disableDown}
+          onClick={setItemCountDown}
+          disabled={disableDown}
         >
             <RemoveOutlinedIcon/>
       </Button>
         <span>{count}</span>
       <Button
-        onClick={setItemCountUp}
-        disabled={disableUp}>
-            <AddOutlinedIcon/>
+          onClick={setItemCountUp}
+          disabled={disableUp}>
+              <AddOutlinedIcon/>
       </Button>
-
-      
-                {/* Aplicamos el prop action a la funcion onClick*/}
       <Button
-          onClick={(e) =>action(e,count)}
+          onClick={()=>{action(count)}}
           variant='contained'
-          color="secondary"> 
-          <Link to={'/cart'} style={{ textDecoration: 'none', color: '#ffffff' }}> {/* Botón que finaliza la compra y lleva al componente Cart */}
-          Ir al Carrito 
+          color="secondary">
+          Agregar     
           <AddShoppingCartOutlinedIcon fontSize="small"/>
-          </Link>
       </Button>
     </div>
   );

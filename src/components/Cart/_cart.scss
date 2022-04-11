@@ -1,0 +1,22 @@
+.cart-description-titles{
+    display: flex;
+    justify-content:space-between;
+}
+
+.cart-description-item{
+    
+    div{
+        margin-left: auto;
+    }
+    .cart-description-img{
+        width: 5rem;
+        img{
+            width: 80%;
+        }
+    }    
+}
+
+
+.cart-empty{
+    display: block;
+}

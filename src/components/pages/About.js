@@ -8,7 +8,7 @@ const About = ()=>{
     },[]);
 
     return (
-        <Container>
+        <Container className='container'>
             <h1>Nosotros</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur bibendum enim ut lectus scelerisque ultricies.

@@ -1,0 +1,18 @@
+
+.cart-widget-menu{
+    display: flex;
+    justify-content: space-around;
+    .cart-widget-img{
+        width: 5rem;
+        img{
+            width: 80%;
+        }
+    }
+}
+.cart-widget-footer{
+    align-self: center;
+    padding: 1rem;
+    .cart-widget-link{
+        color: white;
+    }
+}
