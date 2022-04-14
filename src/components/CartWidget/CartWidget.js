@@ -33,7 +33,7 @@ const CardWidget = () =>{
     return(
         <div>
           <Button aria-describedby={id} variant="outlined" onClick={handleClick}>
-            <ShoppingCartRoundedIcon  fontSize="large" color="secondary"/>
+            <ShoppingCartRoundedIcon  className={cartProducts.length === 0 ? "cart-widget-icon" : ""} fontSize="large" color="secondary"/>
             <p>{cartProducts.length}</p>
           </Button>
           <Popover

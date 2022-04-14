@@ -16,7 +16,10 @@
     }    
 }
 
-
 .cart-empty{
     display: block;
+}
+.cart-btn-container{
+    display: flex;
+    justify-content: space-around;
 }

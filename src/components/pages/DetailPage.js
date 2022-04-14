@@ -8,11 +8,12 @@ import CartContext from '../../context/CartContext';
 import Container from '@mui/material/Container';
 import ItemCartCount from '../ItemCartCount/ItemCartCount';
 
-const DetailPage = ({title,image,price,stock,stored}) => {
+const DetailPage = () => {
 
     const {cartProducts, addProductToCart} = useContext(CartContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
+
 
     const data ={
         id:product.id,
@@ -37,6 +38,7 @@ const DetailPage = ({title,image,price,stock,stored}) => {
     useEffect(()=>{
         filterConsolesById(mockItems, id);
         console.log('Data: ', data)
+        filterItems(cartProducts, data.id);
     },[id]);
 
     const filterConsolesById = (array, id) => {
@@ -45,6 +47,10 @@ const DetailPage = ({title,image,price,stock,stored}) => {
                 return setProduct(product);
             }
         })
+    }
+
+    const filterItems = (array, id)=>{
+        console.log('Funcion filterItems:',array);
     }
 
     return (

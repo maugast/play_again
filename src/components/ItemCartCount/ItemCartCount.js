@@ -11,7 +11,6 @@ function ItemCartCount ({stock,initial,action}){
   const [count, setCount] = useState(initial);
   const [disableUp, setDisableUp] = useState(false);
   const [disableDown, setDisableDown] = useState(true);
- 
 
   const setItemCountUp = ()=>{
     setCount(count+1);
@@ -51,9 +50,10 @@ function ItemCartCount ({stock,initial,action}){
       <Button
           onClick={()=>{action(count)}}
           variant='contained'
-          color="secondary">
+          color="secondary"
+          >
           Agregar     
-          <AddShoppingCartOutlinedIcon fontSize="small"/>
+          <AddShoppingCartOutlinedIcon  fontSize="small"/>
       </Button>
     </div>
   );

@@ -1,21 +1,35 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import CartContext from '../../context/CartContext';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom';
+
 //Styles
 import './_cart.scss';
 
 const Cart = () => {
 
     const { cartProducts , removeProduct } = useContext(CartContext)
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(()=>{
         console.log('Productos en el cart: ', cartProducts.length);
+        calculateTotalPrice();
     })
+
+
+    const calculateTotalPrice = ()=>{
+        let sum = 0;
+        cartProducts.map((cartProduct) =>{
+            console.log(cartProduct.price);
+            sum += cartProduct.price;
+        } )
+        return setTotalPrice(sum);
+    }
 
     return (
         <Container className='container'>
@@ -53,17 +67,32 @@ const Cart = () => {
                   )
                 })
               }
-                <Button
-                    variant='contained'
-                    color='secondary'
-                    onClick={()=>{console.log('Se completó la compra!')}}
-                    >
-                    Completar compra
-                </Button>
+                
                 <div>
                     <h2>Total</h2>
-                    <p>$ XXX</p>
+                    <p><strong>$ {totalPrice}</strong></p>
                 </div>
+                <div className='cart-btn-container'>
+                {cartProducts.length===0 ? (
+                     <Button
+                     variant='outlined'
+                     color='secondary'
+                     onClick={()=>{console.log('Volviendo a Productos')}}
+                     >
+                     <Link to='/productos'>Ver Productos</Link>
+                 </Button>
+                ):(
+                    <Button
+                        variant='contained'
+                        color='secondary'
+                        onClick={()=>{console.log('Se completó la compra!')}}
+                        >
+                        Completar compra
+                    </Button>
+                )}
+                   
+                </div>
+                
         </Container>
     )
 }

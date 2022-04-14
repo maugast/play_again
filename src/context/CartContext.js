@@ -21,7 +21,7 @@ const CartProvider = ({children})=>{
     const clearCart = () =>{
         setCartProducts([]);
       }
-    
+      
 
     const data = {
         cartProducts,
