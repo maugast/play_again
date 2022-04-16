@@ -34,6 +34,9 @@ const Item = ({id,title,image,price,stock,stored})=> {
           console.log('Productos del carrito: ', cartProducts);
       })
 
+
+      
+
     return (
         <div className='card'>
             <h2>{title}</h2>

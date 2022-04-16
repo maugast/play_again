@@ -1,12 +1,13 @@
 //Hooks
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc } from "firebase/firestore";
 
 //Components
-import mockItems from '../../itemsMock';
 import CartContext from '../../context/CartContext';
 import Container from '@mui/material/Container';
 import ItemCartCount from '../ItemCartCount/ItemCartCount';
+import db from '../../firebase';
 
 const DetailPage = () => {
 
@@ -35,19 +36,27 @@ const DetailPage = () => {
       }
 
 
+    const getItems = async () => {
+        const docRef = doc(db, "items", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            let item = docSnap.data();
+            item.id = docSnap.id;
+            setProduct(item)
+            
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+    }
+
     useEffect(()=>{
-        filterConsolesById(mockItems, id);
-        console.log('Data: ', data)
+        getItems();
         filterItems(cartProducts, data.id);
     },[id]);
 
-    const filterConsolesById = (array, id) => {
-        return array.map((product) =>{
-            if(product.id == id){
-                return setProduct(product);
-            }
-        })
-    }
 
     const filterItems = (array, id)=>{
         console.log('Funcion filterItems:',array);

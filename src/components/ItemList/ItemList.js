@@ -3,33 +3,48 @@ import React from 'react';
 //Components
 import Item from '../Item/Item';
 import { useState, useEffect } from 'react';
-import mockItems from '../../itemsMock';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import { useParams } from 'react-router-dom'
+import db from '../../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const ItemList = ()=>{
 
     const [items , setItems] = useState([])
     const [loading, setLoading] = useState(true);
+    const { category } = useParams();
 
-
-    const getConsoles = ()=>{
-        return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-          return resolve(mockItems)
-        },2000);
+    const getConsoles = async ()=>{
+        const itemsCollection = collection(db, 'items');
+        const itemsSnapshot = await getDocs(itemsCollection);
+        const ItemsList = itemsSnapshot.docs.map((doc)=>{
+            let item = doc.data();
+            item.id = doc.id;
+            return item;
         })
+        return ItemsList;
     }
 
 
     useEffect(()=>{
-        getConsoles().then((mockItems)=>{
+        setItems([]);
+        setLoading(true);
+        getConsoles().then((items)=>{
             setLoading(false);
-            setItems(mockItems);
+            category ? filterProductByCategory(items, category) : setItems(items);
+            
         })
-    },[])
+    },[category])
 
+
+    const filterProductByCategory = (array , category) => {
+        return array.map( (product, i) => {
+            if(product.category === category) {
+               return setItems(items => [...items, product]);
+            }
+        })
+    }
 
     return(
         <div>

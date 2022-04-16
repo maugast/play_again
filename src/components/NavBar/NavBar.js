@@ -40,7 +40,8 @@ const pages = [
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -48,6 +49,13 @@ const ResponsiveAppBar = () => {
  
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
 
@@ -97,11 +105,36 @@ const ResponsiveAppBar = () => {
                         }}
                         >
                         {pages.map((page) => (
-                            <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                                <Typography>
+                            (page.id !== 2 ? (
+                                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                                     <Link to={page.url}>{page.title}</Link>
-                                </Typography>
-                            </MenuItem>
+                                </MenuItem>
+                            ):(
+                                <>
+                                    <MenuItem
+                                        key={page.id}
+                                        id="basic-button"
+                                        aria-controls={open ? 'basic-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}>
+                                        Productos
+                                    </MenuItem>
+                                    <Menu
+                                        id="basic-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                        'aria-labelledby': 'basic-button',
+                                        }}
+                                    >
+                                        <MenuItem onClick={handleClose}><Link to={'/consolas'}>Consolas</Link></MenuItem>
+                                        <MenuItem onClick={handleClose}><Link to={'/accesorios'}>Accesorios</Link></MenuItem>
+                                    </Menu>
+                                </>    
+                            ))
+                            
                         ))}
                     </Menu>
                 </Box>
@@ -118,15 +151,45 @@ const ResponsiveAppBar = () => {
                     </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     {pages.map((page) => (
-                        <Button
-                            color="secondary"
-                            variant="outlined"
-                            key={page.id}
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, mx:1 , color: 'secondary', display: 'block' }}
-                            >
-                            <Link to={page.url}>{page.title}</Link>
-                        </Button>
+                        (page.id !== 2 ? (
+                            <Button
+                                color="secondary"
+                                variant="outlined"
+                                key={page.id}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, mx:1 , color: 'secondary', display: 'block' }}
+                                >
+                                <Link to={page.url}>{page.title}</Link>
+                            </Button>
+                        ):(
+                            <>
+                                <Button
+                                    color="secondary"
+                                    variant="outlined"
+                                    key={page.id}
+                                    id="basic-button"
+                                    aria-controls={open ? 'basic-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                    sx={{ my: 2, mx:1 , color: 'secondary', display: 'block' }}
+                                    >
+                                    Productos
+                                </Button>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                    }}
+                                >
+                                    <MenuItem onClick={handleClose}><Link to={'/consolas'}>Consolas</Link></MenuItem>
+                                    <MenuItem onClick={handleClose}><Link to={'/accesorios'}>Accesorios</Link></MenuItem>
+                                </Menu>
+                          </>
+                        ))
                     ))}
                 </Box>
 
