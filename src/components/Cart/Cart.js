@@ -7,29 +7,72 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
+import ModalCustom from '../Modal/Modal';
+import db from '../../firebase';
+import { addDoc, collection } from 'firebase/firestore';
 
 //Styles
 import './_cart.scss';
 
 const Cart = () => {
 
-    const { cartProducts , removeProduct } = useContext(CartContext)
-    const [totalPrice, setTotalPrice] = useState(0);
+    const { cartProducts , removeProduct, totalPrice } = useContext(CartContext)
+    const [openModal, setOpenModal] = useState(false);
+
+
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: ''
+    });
+
+    const [order, setOrder] = useState(
+        {
+            buyer : formData,
+            items: cartProducts.map( (cartProduct)=> {
+                return {
+                    id: cartProduct.id,
+                    title: cartProduct.title,
+                    price: cartProduct.price
+                }
+            }),
+            total: totalPrice
+        }
+    )
+
+
+    const [successOrder , setSuccessOrder ] = useState()
+
+    const handleSubmit = (e) =>{
+        let prevOrder = {...order,
+            buyer : formData
+        }
+
+        e.preventDefault();
+        setOrder({...order,
+            buyer: formData})
+        pushOrder(prevOrder)
+    }
+
+    const pushOrder = async (prevOrder)=>{
+        const orderFireBase = collection(db,'ordenes')
+        const orderDoc = await addDoc(orderFireBase, prevOrder)
+        setSuccessOrder (orderDoc.id)
+    }
+
+    const handleChange = (e) =>{
+        const {value, name} = e.target;
+
+        setFormData({
+            ...formData,
+            [name] : value
+
+        })
+    }
 
     useEffect(()=>{
-        console.log('Productos en el cart: ', cartProducts.length);
-        calculateTotalPrice();
-    })
-
-
-    const calculateTotalPrice = ()=>{
-        let sum = 0;
-        cartProducts.map((cartProduct) =>{
-            console.log(cartProduct.price);
-            sum += cartProduct.price;
-        } )
-        return setTotalPrice(sum);
-    }
+        return totalPrice;
+    },[totalPrice])
 
     return (
         <Container className='container'>
@@ -85,14 +128,33 @@ const Cart = () => {
                     <Button
                         variant='contained'
                         color='secondary'
-                        onClick={()=>{console.log('Se completó la compra!')}}
+                        onClick={()=>{setOpenModal(true)}}
                         >
                         Completar compra
                     </Button>
                 )}
                    
                 </div>
-                
+                {console.log('order ', order)}
+                <ModalCustom handleClose={()=>{setOpenModal(false)}} open={openModal}>
+                    {successOrder ? (
+                        <>
+                            <h3>Orden Generada!</h3>
+                            <p>Su número de orden es: {successOrder}</p>
+                        </>
+                    ):(
+                        <>
+                            <h3>Formulario de orden</h3>
+                            <form onSubmit={handleSubmit}>
+                                <input type='text' name='name' placeholder='Nombre' onChange={handleChange} value={formData.name}></input>
+                                <input type='number' name='phone' placeholder='Teléfono' onChange={handleChange} value={formData.phone}></input>
+                                <input type='email' name='email' placeholder='Email' onChange={handleChange} value={formData.email}></input>
+
+                                <Button type='submit' variant='contained'color="secondary">Enviar datos</Button>
+                            </form>
+                        </>
+                    )}
+                </ModalCustom>
         </Container>
     )
 }
