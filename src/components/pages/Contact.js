@@ -16,7 +16,10 @@ const Contact = () =>{
 
     return (
         <Container className='container'>
-            <h2>Contacto</h2>
+            <div className="main-title">
+                <h1>Contacto</h1>
+                <p>Suscribite para recibir información anticipada sobre nuestras últimas novedades</p>
+            </div>
             <form className='form' onSubmit={submitForm}>
                 <input type={'text'} placeholder={'Nombre'}></input>
                 <input type={'text'} placeholder={'Apellido'}></input>

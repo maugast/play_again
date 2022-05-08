@@ -30,9 +30,6 @@ const pages = [
      title:'Productos',
 	 url: '/productos'},
 	{id:3,
-     title:'Nosotros',
-	 url: '/nosotros'},
-	{id:4,
      title:'Contacto',
 	 url: '/contacto'},
 ]
@@ -110,7 +107,7 @@ const ResponsiveAppBar = () => {
                                     <Link to={page.url}>{page.title}</Link>
                                 </MenuItem>
                             ):(
-                                <>
+                                <div>
                                     <MenuItem
                                         key={page.id}
                                         id="basic-button"
@@ -132,7 +129,7 @@ const ResponsiveAppBar = () => {
                                         <MenuItem onClick={handleClose}><Link to={'/consolas'}>Consolas</Link></MenuItem>
                                         <MenuItem onClick={handleClose}><Link to={'/accesorios'}>Accesorios</Link></MenuItem>
                                     </Menu>
-                                </>    
+                                </div>    
                             ))
                             
                         ))}

@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
 
+
+
 const Products = () => {
 
 useEffect(()=>{
@@ -12,7 +14,9 @@ useEffect(()=>{
 
     return (
         <Container className='container'>
-            <h1>Productos</h1>
+            <div className='main-title'>
+                <h1>Productos</h1>
+            </div>
             <ItemListContainer />
         </Container>
     )

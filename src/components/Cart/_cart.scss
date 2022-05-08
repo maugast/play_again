@@ -1,12 +1,12 @@
 .cart-description-titles{
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
 }
 
 .cart-description-item{
     
     div{
-        margin-left: auto;
+        margin: 10px auto;
     }
     .cart-description-img{
         width: 5rem;
@@ -22,4 +22,21 @@
 .cart-btn-container{
     display: flex;
     justify-content: space-around;
+}
+
+.order-form{
+    padding: 30px;
+    width: 500px;
+    h3{
+        margin-bottom: 20px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 10px auto;
+        }
+    }
 }

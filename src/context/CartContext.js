@@ -19,8 +19,19 @@ const CartProvider = ({children})=>{
 
     const removeProduct = (product) =>{
         setCartProducts(cartProducts.filter( cartProduct => cartProduct.id !== product.id))
-
+        newTotal(product); //Llamo a la función que vuelve a calcular el total
+        console.log('Cantidad de productos en cartProduct: ', cartProducts)
     }
+
+    //Función que calcula el total cuando se remueve algún item del carrito
+    const newTotal = (product) =>{
+        let newCartProducts = cartProducts.map((cartProduct)=>{
+            console.log('cartProduct.price: ', cartProduct.price);
+            setTotalPrice(totalPrice-product.price)
+        })
+        return newTotal;
+    }
+
 
     const clearCart = () =>{
         setCartProducts([]);

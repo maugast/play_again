@@ -11,3 +11,27 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.banner-pre-footer{
+    height:400px;
+    width:100%;
+    margin: 80px 0 -60px 0;
+    background-image: url("../../Images/banner-pre-footer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .banner-pre-footer-data{
+        float: right;
+        font-size: larger;
+        padding-right: 8rem;
+        padding-top: 8rem;
+        color: #ffffff;
+        .baner-pre-footer-btn{
+            margin-top: 20px;
+            background-color: #ffffff;
+            border: #ffffff 1px solid;
+            padding: 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+    }
+}

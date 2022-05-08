@@ -14,7 +14,7 @@ const DetailPage = () => {
     const {cartProducts, addProductToCart} = useContext(CartContext);
     const { id } = useParams();
     const [product, setProduct] = useState({});
-
+    const [disableBuy, setDisableBuy] = useState()
 
     const data ={
         id:product.id,
@@ -58,6 +58,14 @@ const DetailPage = () => {
     },[id]);
 
 
+    useEffect(()=>{
+        let exist = cartProducts.find(cartProduct => cartProduct.id == data.id)
+        if(exist){
+            console.log('Este producto ya se compró')
+            setDisableBuy(true)
+        }
+      })
+
     const filterItems = (array, id)=>{
         console.log('Funcion filterItems:',array);
     }
@@ -78,6 +86,7 @@ const DetailPage = () => {
                         stock={product.stock}
                         initial={1}
                         action={addToCart}
+                        buy={disableBuy}
                         />
                 </div>
             </div>

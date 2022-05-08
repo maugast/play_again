@@ -10,6 +10,7 @@ import CartContext from '../../context/CartContext';
 const Item = ({id,title,image,price,stock,stored})=> {
     
     const {cartProducts, addProductToCart} = useContext(CartContext);
+    const [disableBuy, setDisableBuy] = useState(false)
 
       const data ={
           id,
@@ -21,21 +22,25 @@ const Item = ({id,title,image,price,stock,stored})=> {
       }
 
       const addToCart = (quantity) => {
-        console.log('Productos agregados: ', cartProducts);
+        console.log('Productos agregados: ', data);
         data.price *=quantity;
         console.log('Quantity ', quantity)
         data.stock-=quantity;
         console.log('Stock actual', data.stock)
         data.stored=quantity;
         addProductToCart(data);
+
+        
       }
 
+
       useEffect(()=>{
-          console.log('Productos del carrito: ', cartProducts);
-      })
-
-
-      
+        let exist = cartProducts.find(cartProduct => cartProduct.id == data.id)
+        if(exist){
+            console.log('Este producto ya se compró')
+            setDisableBuy(true)
+        }
+      },[cartProducts])
 
     return (
         <div className='card'>
@@ -46,6 +51,7 @@ const Item = ({id,title,image,price,stock,stored})=> {
                 action={addToCart}
                 initial={1}
                 stock={data.stock}
+                buy={disableBuy}
             />
         </div>
     )

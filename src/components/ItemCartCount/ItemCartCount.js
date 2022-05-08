@@ -6,7 +6,7 @@ import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutl
 
 
 
-function ItemCartCount ({stock,initial,action}){
+function ItemCartCount ({stock,initial,action,buy}){
 
   const [count, setCount] = useState(initial);
   const [disableUp, setDisableUp] = useState(false);
@@ -51,6 +51,7 @@ function ItemCartCount ({stock,initial,action}){
           onClick={()=>{action(count)}}
           variant='contained'
           color="secondary"
+          disabled={buy}
           >
           Agregar     
           <AddShoppingCartOutlinedIcon  fontSize="small"/>
