@@ -1,6 +1,6 @@
 <h1 align='center'>Play Again - Ecommerce</h1>
 
-In the project directory, you can run:![playagain-home](https://user-images.githubusercontent.com/51533316/167317756-7c815712-b928-44b2-bbaa-efd788a8e127.png)
+![playagain-home](https://user-images.githubusercontent.com/51533316/167317756-7c815712-b928-44b2-bbaa-efd788a8e127.png)
 
 
 ### `npm start`
