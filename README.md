@@ -1,6 +1,6 @@
 <h1 align='center'>Play Again - Ecommerce</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./Images/playagain-home.png' />
 
 ## Available Scripts
 
